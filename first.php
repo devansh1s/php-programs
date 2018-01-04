@@ -5,14 +5,10 @@ $c;
 $a = 10;
 $b = 20;
 $c = 30;
-if ($a > $b) {
-	if ($a > $c)
-		echo($a);
-}
-else if ($b > $c) {
+if ($a > $b and $a > $c)
+	echo($a);
+else if ($b > $a and $b > $c)
 	echo($b);
-}
-else {
+else
 	echo($c);
-}
 ?>
