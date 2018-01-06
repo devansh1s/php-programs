@@ -1,3 +1,4 @@
+<?php
 $a;
 $temp;
 $a = array(5,4,3,2,1);
@@ -15,3 +16,4 @@ for ($i=0;$i<5;$i++) {
 echo(" Sorted array : ");
 for ($i=0;$i<5;$i++)
   echo($a[$i]);
+?>
