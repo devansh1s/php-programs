@@ -12,10 +12,11 @@ else {
 			break;
 		}
 	}
-if ($flag) {
-	echo("not prime");
-}
-else {
-	echo("prime");
+	if ($flag) {
+		echo("not prime");
+	}
+	else {
+		echo("prime");
+	}
 }
 ?>
