@@ -4,24 +4,17 @@
 .error {color: #FF0000;}
 </style>
 </head>
-<title>Factorial</title>
+<title>Pattern</title>
 <body>
 <?php
 	$valErr = $s = "";
-	$n;
+	$n=0;
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		if (empty($_POST['n'])) {
 			$valErr = "Enter a Number";
 		}
 		else {
 			$n = test_input($_POST['n']);
-			$flag = false;
-			if ($n == 1 OR $n==2) {
-				$s = "$n is prime";
-			}
-			else {
-				$s = fact($n);
-			}
 		}
 	}
 
@@ -31,16 +24,9 @@
 		$data = htmlspecialchars($data);
 		return $data;
 	}
-	function fact($n) {
-		$b = 1;
-		for ($i = 2;$i <= $n; $i++) {
-			$b = $b*$i;
-		}
-		return $b;
-	}
 ?>
-<h1>Factorial</h1>
-<p>Enter number you want the factorial of</p>
+<h1>Pattern</h1>
+<p>Enter number of lines till you want the pattern</p>
 <p><span class="error">* required field.</span></p>
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method='POST'>
 	n:<br>
@@ -49,7 +35,20 @@
 	<br><br>
 	<input type="submit" value="Submit">
 </form>
-<?php echo "Answer : ".$s; ?>
+<?php
+	if ($n<=0) {
+		echo "Answer : ".$s;
+	}
+	else {
+		echo "Answer : <br><br>";
+		for ($i=0;$i<$n;$i++) {
+			for ($j=0;$j<=$i;$j++) {
+				echo "* ";
+			}
+			echo "<br>";
+		}
+	}
+?>
 <br>
 </body>
 </html>

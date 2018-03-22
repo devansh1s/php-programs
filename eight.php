@@ -4,24 +4,17 @@
 .error {color: #FF0000;}
 </style>
 </head>
-<title>Factorial</title>
+<title>Remove Spaces</title>
 <body>
 <?php
-	$valErr = $s = "";
-	$n;
+	$valErr = $s1 = $s2 = "";
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-		if (empty($_POST['n'])) {
-			$valErr = "Enter a Number";
+		if (empty($_POST['s'])) {
+			$valErr = "Enter a String";
 		}
 		else {
-			$n = test_input($_POST['n']);
-			$flag = false;
-			if ($n == 1 OR $n==2) {
-				$s = "$n is prime";
-			}
-			else {
-				$s = fact($n);
-			}
+			$s1 = test_input($_POST['s']);
+			$s2 = str_replace(" ","",$s1);
 		}
 	}
 
@@ -31,25 +24,18 @@
 		$data = htmlspecialchars($data);
 		return $data;
 	}
-	function fact($n) {
-		$b = 1;
-		for ($i = 2;$i <= $n; $i++) {
-			$b = $b*$i;
-		}
-		return $b;
-	}
 ?>
-<h1>Factorial</h1>
-<p>Enter number you want the factorial of</p>
+<h1>Remove spaces</h1>
+<p>Enter string you want to remove spaces from</p>
 <p><span class="error">* required field.</span></p>
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method='POST'>
-	n:<br>
-	<input type="number" name="n" value="<?php echo $n;?>">
+	s:<br>
+	<input type="text" name="s" value="<?php echo $s1;?>">
 	<span class="error">* <?php echo $valErr;?></span>
 	<br><br>
 	<input type="submit" value="Submit">
 </form>
-<?php echo "Answer : ".$s; ?>
+<?php echo "Answer : ".$s2; ?>
 <br>
 </body>
 </html>

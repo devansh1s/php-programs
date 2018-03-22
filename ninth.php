@@ -4,7 +4,7 @@
 .error {color: #FF0000;}
 </style>
 </head>
-<title>Factorial</title>
+<title>Sum of first n odd numbers</title>
 <body>
 <?php
 	$valErr = $s = "";
@@ -15,13 +15,13 @@
 		}
 		else {
 			$n = test_input($_POST['n']);
-			$flag = false;
-			if ($n == 1 OR $n==2) {
-				$s = "$n is prime";
+			$sum = 0;
+			$num = 1;
+			for ($i=0;$i<$n;$i++) {
+					$sum += $num;
+					$num += 2;
 			}
-			else {
-				$s = fact($n);
-			}
+			$s = $sum;
 		}
 	}
 
@@ -39,8 +39,8 @@
 		return $b;
 	}
 ?>
-<h1>Factorial</h1>
-<p>Enter number you want the factorial of</p>
+<h1>Sum of first n odd numbers</h1>
+<p>Enter number of odd numbers you want sum of</p>
 <p><span class="error">* required field.</span></p>
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method='POST'>
 	n:<br>
